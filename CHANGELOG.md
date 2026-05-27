@@ -5,6 +5,25 @@ All notable changes to Semia are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.1.3] - 2026-05-27
+
+### Fixed
+
+- The built-in Datalog detector now honors the same timeout passed to the
+  Soufflé backend, so runaway evaluations fail cleanly instead of running
+  unbounded.
+- Built-in Datalog evaluation now enforces a default derived-tuple budget,
+  preventing explosive rule expansion from consuming excessive CPU or memory.
+
+### Changed
+
+- Evidence-taint checking is enabled by default with a `0.1` threshold, so
+  synthesized facts citing evidence absent from the prepared skill text are
+  rejected unless users explicitly override the threshold.
+- Rebuilt the bundled Codex and Claude Code plugin zipapps with the detector
+  hardening and evidence-taint default.
+- Bumped `codecov/codecov-action` from `v6.0.0` to `v6.0.1` in CI.
+
 ## [0.1.2] - 2026-05-16
 
 ### Added
@@ -173,6 +192,7 @@ release pipeline.
   `Apache-2.0`. `package_build_check.py` and
   `validate_plugin_manifests.py` enforce it.
 
+[0.1.3]: https://github.com/berabuddies/Semia/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/berabuddies/Semia/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/berabuddies/Semia/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/berabuddies/Semia/releases/tag/v0.1.0
